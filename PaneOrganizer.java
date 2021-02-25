@@ -4,11 +4,38 @@ package lab4;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 public class PaneOrganizer {
 
+	private BorderPane _root;
+	private KeyableRect _leftRect;
+	private KeyableRect _centerRect;
+	private KeyableRect _rightRect;
+
 	public PaneOrganizer() {
+		_root = new BorderPane();
+		this.createRectsPane();
+		_root.setStyle("-fx-background-color: orange;");
 		// TODO: instantiate the BorderPane and call the private methods here
+
+	}
+
+	public BorderPane getRoot(){
+		return _root;
+	}
+
+	private void createRectsPane(){
+		Pane rectsPane = new Pane();
+		rectsPane.setPrefSize(Constants.RECT_PANE_PREF_WIDTH,Constants.RECT_PANE_PREF_HEIGHT);
+		rectsPane.setStyle("-fx-background-color: #FFFFFF;");
+		_root.setTop(rectsPane);
+		_leftRect = new KeyableRect(Constants.LEFT_RECT_X, Constants.LEFT_RECT_Y, Color.BLUE);
+		_centerRect = new KeyableRect(Constants.CENTER_RECT_X, Constants.CENTER_RECT_Y, Color.YELLOW);
+		_rightRect = new KeyableRect(Constants.RIGHT_RECT_X, Constants.RIGHT_RECT_Y, Color.RED);
+		rectsPane.getChildren().addAll(_leftRect.getRectNode(), _centerRect.getRectNode(), _rightRect.getRectNode());
 
 	}
 

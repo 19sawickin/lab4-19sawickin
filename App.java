@@ -23,7 +23,14 @@ public class App extends Application {
    */
   @Override
   public void start(Stage primaryStage) {
-	  // TODO: instantiate PaneOrganizer and set up the scene
+    PaneOrganizer organizer = new PaneOrganizer();
+    Scene scene = new Scene(organizer.getRoot());
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("Stage");
+    primaryStage.show();
+
+
+    // TODO: instantiate PaneOrganizer and set up the scene
 
 	  // TODO: set the title and show the primaryStage
 
