@@ -1,6 +1,7 @@
 package lab4;
 
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -78,6 +79,8 @@ public class PaneOrganizer {
 				case R:
 					_rightRect.changeColor();
 					break;
+				case Q:
+					Platform.exit();
 				default:
 					break;
 			}
