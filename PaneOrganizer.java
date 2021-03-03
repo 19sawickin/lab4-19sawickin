@@ -68,9 +68,18 @@ public class PaneOrganizer {
 	private class KeyHandler implements EventHandler<KeyEvent> {
 		@Override
 		public void handle(KeyEvent e) {
-			KeyCode keyPressed = e.getCode();
-			if (keyPressed == KeyCode.SPACE) {
-					System.out.println("Spacebar!");
+			switch(e.getCode()) {
+				case L:
+					_leftRect.changeColor();
+					break;
+				case C:
+					_centerRect.changeColor();
+					break;
+				case R:
+					_rightRect.changeColor();
+					break;
+				default:
+					break;
 			}
 			e.consume();
 

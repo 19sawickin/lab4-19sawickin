@@ -26,8 +26,11 @@ public class KeyableRect {
 	}
 
 	public void changeColor() {
-		_rect.setFill((int)Math.random()*256, (int)Math.random()*256, (int)Math.random()*256);
-
+		int red = (int) (Math.random()*256);
+		int green = (int) (Math.random()*256);
+		int blue = (int) (Math.random()*256);
+		Color customColor = new Color.rgb(red,green,blue);
+		_rect.setFill(customColor);
 	}
 
 	public Node getRectNode(){
