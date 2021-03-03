@@ -2,10 +2,13 @@ package lab4;
 
 
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 public class PaneOrganizer {
@@ -19,6 +22,7 @@ public class PaneOrganizer {
 		_root = new BorderPane();
 		this.createRectsPane();
 		_root.setStyle("-fx-background-color: orange;");
+		this.createLabelPane();
 		// TODO: instantiate the BorderPane and call the private methods here
 
 	}
@@ -36,6 +40,17 @@ public class PaneOrganizer {
 		_centerRect = new KeyableRect(Constants.CENTER_RECT_X, Constants.CENTER_RECT_Y, Color.YELLOW);
 		_rightRect = new KeyableRect(Constants.RIGHT_RECT_X, Constants.RIGHT_RECT_Y, Color.RED);
 		rectsPane.getChildren().addAll(_leftRect.getRectNode(), _centerRect.getRectNode(), _rightRect.getRectNode());
+		rectsPane.addEventHandler(KeyEvent.KEY_PRESSED, new KeyHandler());
+		rectsPane.setFocusTraversable(true);
+	}
+
+	private void createLabelPane() {
+		VBox labelPane = new VBox();
+		Label label = new Label("Introduction to JavaFX!");
+		labelPane.getChildren().add(label);
+		labelPane.setAlignment(Pos.CENTER);
+		_root.setBottom(labelPane);
+
 
 	}
 
@@ -50,13 +65,14 @@ public class PaneOrganizer {
 	 * The purpose of this EventHandler is to detect user key input
 	 * and to have a specific response depending on which key is pressed.
 	 */
-	public class KeyHandler implements EventHandler<KeyEvent> {
+	private class KeyHandler implements EventHandler<KeyEvent> {
 		@Override
 		public void handle(KeyEvent e) {
 			KeyCode keyPressed = e.getCode();
 			if (keyPressed == KeyCode.SPACE) {
 					System.out.println("Spacebar!");
 			}
+			e.consume();
 
 			// TODO: add switch statement for keyPressed input
 
